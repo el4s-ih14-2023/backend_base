@@ -80,9 +80,9 @@ trivy:
 tinker:
 	(${SAIL} tinker)
 
-.Pony: bash
-bash:
-	(${SAIL} bash)
+.Pony: ash
+ash:
+	(${SAIL} exec laravel.test ash)
 
 .Pony: migrate
 migrate:
