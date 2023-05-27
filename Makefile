@@ -22,8 +22,7 @@ setup:
 	(${BACKEND_ENV} composer install --ignore-platform-reqs)
 	(${BACKEND_ENV} php artisan key:generate)
 	@make up
-	sleep 10
-	# @make generate
+	@make generate
 	(${SAIL} pint)
 
 .Pony: build
