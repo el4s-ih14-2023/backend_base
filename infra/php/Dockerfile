@@ -11,7 +11,6 @@ RUN apk add --no-cache --virtual build-essentials \
     docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp && \
     docker-php-ext-install gd && \
     docker-php-ext-enable redis && \
-    docker-php-ext-install mysqli && \
     docker-php-ext-install pdo_pgsql && \
     docker-php-ext-install intl && \
     docker-php-ext-install opcache && \
