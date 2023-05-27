@@ -16,3 +16,6 @@ npm-debug.log
 yarn-error.log
 /.fleet
 /.idea
+_ide_helper.php
+clover.xml
+.DS_Store
