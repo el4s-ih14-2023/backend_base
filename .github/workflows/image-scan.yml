@@ -15,6 +15,7 @@ on:
 jobs:
   build:
     name: Image Scan
+    # TODO: #13 | 実行時間短縮に向けた対策
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
