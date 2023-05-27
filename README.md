@@ -19,4 +19,7 @@
 
 Laravel 初期-> http://localhost 
 
+# 依存関係の追加時
 
+- `make require package=パッケージ名` # パッケージを追加
+- `make require-dev package=パッケージ名` # 開発用パッケージを追加

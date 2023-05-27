@@ -96,7 +96,7 @@ annotation:
 phpstan:
 	(${BACKEND_ENV} vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=2G)
 
-# make require package=<package name>で利用可能
+# make require-dev package=<package name>で利用可能
 .Pony: require-dev
 require-dev:
 	@if [ -z "$(package)" ]; then \
@@ -105,6 +105,7 @@ require-dev:
 	fi
 	$(COMPOSER) require --dev $(package)
 
+# make require package=<package name>で利用可能
 .Pony: require
 require:
 	@if [ -z "$(package)" ]; then \
