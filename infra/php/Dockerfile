@@ -2,7 +2,13 @@ FROM composer:2.5.5 as composer
 
 FROM php:8.2-fpm-alpine as app-base
 
-RUN apk add --no-cache mysql-client msmtp perl wget procps shadow libzip libpng libjpeg-turbo libwebp freetype icu tzdata
+
+ENV TZ=Asia/Tokyo \
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
+
+RUN apk add --no-cache msmtp perl wget procps shadow libzip libpng libjpeg-turbo libwebp freetype icu tzdata postgresql-libs
 
 RUN apk add --no-cache --virtual build-essentials \
     icu-dev icu-libs zlib-dev g++ make automake autoconf libzip-dev oniguruma-dev libpq-dev \
@@ -18,11 +24,6 @@ RUN apk add --no-cache --virtual build-essentials \
     docker-php-ext-install zip && \
     docker-php-ext-install bcmath && \
     apk del build-essentials && rm -rf /usr/src/php*
-
-ENV TZ=Asia/Tokyo \
-    LANG=en_US.UTF-8 \
-    LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8
 
 RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 COPY ./infra/php/settings/php.ini /usr/local/etc/php/conf.d/php.ini
