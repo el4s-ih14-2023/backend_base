@@ -36,7 +36,7 @@ generate:
 	(${BACKEND_ENV} php artisan ide-helper:generate)
 	@make migrate
 	@make annotation
-    # TODO: OpenAPI スキーマ
+	# TODO: OpenAPI スキーマ
 	# @make oas-generate
 
 .Pony: up
@@ -99,16 +99,16 @@ phpstan:
 # make require package=<package name>で利用可能
 .Pony: require-dev
 require-dev:
-    @if [ -z "$(package)" ]; then \
-        echo "package variable is not set. Example: make require-dev package=laravel/sail"; \
-        exit 1; \
-    fi
-    $(COMPOSER) require --dev $(package)
+	@if [ -z "$(package)" ]; then \
+		echo "package variable is not set. Example: make require-dev package=laravel/sail"; \
+		exit 1; \
+	fi
+	$(COMPOSER) require --dev $(package)
 
 .Pony: require
 require:
-    @if [ -z "$(package)" ]; then \
-        echo "package variable is not set. Example: make require package=laravel/sail"; \
-        exit 1; \
-    fi
-    $(COMPOSER) require $(package)
+	@if [ -z "$(package)" ]; then \
+		echo "package variable is not set. Example: make require package=laravel/sail"; \
+		exit 1; \
+	fi
+	$(COMPOSER) require $(package)
