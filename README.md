@@ -2,6 +2,8 @@
 
 ## 初回手順
 
+事前にmakeコマンドを使えるようにしておく必要があります。
+
 1. git clone https://github.com/el4s-ih14-2023/backend_base.git
 2. make setup-local # 起動まで自動で行います。
 
