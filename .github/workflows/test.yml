@@ -15,6 +15,11 @@ on:
       - main
       - develop
 
+permissions:
+  contents: write
+  pull-requests: write
+
+
 jobs:
   Test:
     # TODO: #13 | 実行時間短縮に向けた対策
