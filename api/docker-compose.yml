@@ -23,7 +23,7 @@ services:
         networks:
             - sail
         depends_on:
-            - db
+            - postgres
             - redis
             - meilisearch
             - mailpit
