@@ -18,6 +18,7 @@ setup-ci:
 
 .Pony: setup
 setup:
+	git config core.hooksPath .githooks
 	(cp .env.example .env)
 	(${BACKEND_ENV} composer install --ignore-platform-reqs)
 	(${BACKEND_ENV} php artisan key:generate)
