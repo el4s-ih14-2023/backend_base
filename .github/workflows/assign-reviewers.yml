@@ -1,0 +1,21 @@
+name: 'Auto Assign For Any P.R.'
+on:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# NOTE: レビュワーの自動アサインについては需要があれば
+jobs:
+  add-reviews:
+    if: github.event.pull_request.draft == false && toJSON(github.event.pull_request.requested_reviewers) == '[]'
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - uses: kentaro-m/auto-assign-action@v1.2.5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

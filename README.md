@@ -25,3 +25,15 @@ Laravel 初期-> http://localhost
 
 - `make require package=パッケージ名` # パッケージを追加
 - `make require-dev package=パッケージ名` # 開発用パッケージを追加
+
+# テスト実行
+
+- `make test` # テスト実行
+- `make lint` # 静的解析実行
+
+# その他ツール群
+
+- `make tinker` # tinker起動
+- `make ash` # Laravelのアプリケーションコンテナに潜り込んで作業できます
+- `make migrate` # マイグレーション実行
+- `make route-check` # ルーティング確認

@@ -1,0 +1,45 @@
+name: Image Scan
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    name: Image Scan
+    # TODO: #13 | 実行時間短縮に向けた対策
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Build images
+        run: |
+          make all-containers-build
+      - name: Nginx Container Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "backend_base-nginx:latest"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+      - name: PHP Container Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "backend_base-laravel.test:latest"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
