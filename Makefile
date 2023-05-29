@@ -3,6 +3,7 @@ export WWWUSER=${WWWUSER:-$UID}
 BACKEND_ENV=docker run --rm -i --user $(shell id -u):$(shell id -g) -v $(shell git rev-parse --show-superproject-working-tree --show-toplevel | head -1):/var/www/html -w /var/www/html laravelsail/php82-composer:latest
 SAIL=$(shell git rev-parse --show-superproject-working-tree --show-toplevel | head -1)/vendor/bin/sail
 COMPOSER=docker run --rm -i --user `id -u`:`id -g` -v `git rev-parse --show-superproject-working-tree --show-toplevel | head -1`:/app composer:2.3.10
+BACKEND_ROOT=$(shell git rev-parse --show-superproject-working-tree --show-toplevel | head -1)
 
 .Pony: setup-local
 setup-local:
@@ -18,7 +19,7 @@ setup-ci:
 
 .Pony: setup
 setup:
-	git config core.hooksPath .githooks
+	git config core.hooksPath ${BACKEND_ROOT}/.githooks
 	(cp .env.example .env)
 	(${BACKEND_ENV} composer install --ignore-platform-reqs)
 	(${BACKEND_ENV} php artisan key:generate)
