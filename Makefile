@@ -52,7 +52,7 @@ down:
 destroy:
 	(${SAIL} down -v)
 
-.Pony: restart
+.Pony: test
 test:
 	(${SAIL} test --coverage --coverage-clover clover.xml  )
 
