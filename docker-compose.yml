@@ -62,7 +62,7 @@ services:
             timeout: 5s
             retries: 3
     redis:
-        image: 'redis:alpine'
+        image: 'redis:7.0.11-alpine3.18'
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
         volumes:
