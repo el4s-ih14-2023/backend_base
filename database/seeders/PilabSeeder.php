@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Pilab;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PilabSeeder extends Seeder
@@ -53,6 +52,6 @@ class PilabSeeder extends Seeder
             'ohm' => 0,
             'imgPath' => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.jquery-az.com%2Fhtml-img-src-image-source-attribute-with-path-possibilities-5-examples%2F&psig=AOvVaw2JYEVV4bb7O79HkZpume89&ust=1687671914357000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJjhk_qZ2_8CFQAAAAAdAAAAABAE',
         ]);
-        
+
     }
 }

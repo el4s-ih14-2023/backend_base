@@ -1,19 +1,19 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\PilabController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+Route::get('/', function () {
+    return 'Hello, this is the API!';
+});
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'v1'], function () {
+    Route::get('/', function () {
+        return 'Hello, this is the v1 API!';
+    });
+    logger('access', ['mes' => 'get/post']);
+    Route::get('/pilab', [PilabController::class, 'index']);
+
+    logger('access', ['mes' => 'post']);
+    Route::post('/pilab', [PilabController::class, 'store']);
 });
